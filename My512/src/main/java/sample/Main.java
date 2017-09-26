@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.Board;
 import model.Model;
@@ -14,14 +16,15 @@ import java.util.logging.Logger;
 
 public class Main extends Application {
 
-    
+    public int width = 500 ;
+    public int height = 600 ;
     @Override
     public void start(Stage primaryStage) throws Exception{
         URL url = new File("src/main/resources/sample.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("2048");
-        primaryStage.setScene(new Scene(root, 500, 600));
+        primaryStage.setScene(new Scene(root, width, height));
 
         Model model = new Model(2);
 
@@ -29,6 +32,10 @@ public class Main extends Application {
 
         model.getBoard().loadBoard(rankMatrix);*/
         model.getBoard().printBoard(Logger.getGlobal(), "");
+
+
+
+
 
         new Controller(primaryStage, model);
 

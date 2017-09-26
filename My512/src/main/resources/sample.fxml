@@ -3,6 +3,83 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.util.*?>
+
+
 <GridPane fx:controller="sample.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <!--<BorderPane layoutX="0.0" layoutY="0.0" prefHeight="500.0" prefWidth="600.0">
+        <center>
+            <TableView fx:id="myTableView" prefHeight="450.0" prefWidth="550.0">
+                <columns>
+                    <TableColumn prefWidth="42.0" text="">
+                    </TableColumn>
+                    <TableColumn prefWidth="110.0" text="Plan">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="vfcPlan" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="55.0" text="VFC #">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="vfcNumber" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="100.0" text="Location">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="location" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="100.0" text="Arrival">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="arrivalTime" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="35.0" text="Org">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="origin" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="35.0" text="Dst">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="destination" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="65.0" text="Shipments">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="shipments" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="125.0" text="Consignee">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="consignee" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="35.0" text="Haz">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="hazMat" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="45.0" text="Temp">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="temperature" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </center>
+    </BorderPane>-->
 </GridPane>
