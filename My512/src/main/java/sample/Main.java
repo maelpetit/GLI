@@ -4,8 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -22,7 +20,7 @@ public class Main extends Application {
         primaryStage.setTitle("2048");
         primaryStage.setScene(new Scene(root, 500, 600));
 
-        //new Controller(primaryStage);
+        new Controller(primaryStage);
 
         primaryStage.show();
     }

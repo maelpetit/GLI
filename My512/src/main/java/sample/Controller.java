@@ -6,6 +6,10 @@ import javafx.stage.Stage;
 
 public class Controller {
 
+    public Controller(){
+
+    }
+
     public Controller(Stage primaryStage){
 
         primaryStage.getScene().addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
