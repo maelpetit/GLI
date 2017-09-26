@@ -26,7 +26,7 @@ public class Main extends Application {
         primaryStage.setTitle("2048");
         primaryStage.setScene(new Scene(root, width, height));
 
-        Model model = new Model(2);
+        Model model = new Model(4);
 
         /*int[][] rankMatrix = {{0,0,0,1},{0,0,0,1},{0,0,0,1},{0,0,0,1}};
 
