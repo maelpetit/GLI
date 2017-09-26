@@ -11,7 +11,7 @@ public class BoardImpl implements Board {
     private final int sideSizeInSquares;
     private Direction directionToPackInto;
     private Score score;
-    private boolean isGameOver = false;
+    private boolean gameOver = false;
 
     public BoardImpl(int sideSizeInSquares, Score score) {
         this.score = score;
@@ -21,6 +21,7 @@ public class BoardImpl implements Board {
         this.sideSizeInSquares = sideSizeInSquares;
         currentBoard = new Tile[sideSizeInSquares][sideSizeInSquares];
         nextBoard = new Tile[sideSizeInSquares][sideSizeInSquares];
+        generateRandomTile();
     }
 
     @Override
@@ -31,6 +32,11 @@ public class BoardImpl implements Board {
     @Override
     public Score getScore(){
         return score;
+    }
+
+    @Override
+    public boolean isGameOver(){
+        return gameOver;
     }
 
     private Tile[][] currentBoard;
@@ -59,7 +65,6 @@ public class BoardImpl implements Board {
         for (int i = 1; i <= sideSizeInSquares; i++) {
             packLine(i);
         }
-
     }
 
     /**
@@ -219,6 +224,11 @@ public class BoardImpl implements Board {
                     emptyTiles++;
                 }
             }
+        }
+
+        if(emptyTiles == 0){
+            gameOver = true;
+            return;
         }
 
         int generated = (int) (Math.random() * emptyTiles) + 1;

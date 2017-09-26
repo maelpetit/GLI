@@ -30,22 +30,24 @@ public class Controller {
 
     private void Init(){
         primaryStage.getScene().addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if(key.getCode()== KeyCode.O) {
-                System.out.println("You pressed O");
-                packUp();
-                print();
-            }else if(key.getCode()== KeyCode.K) {
-                System.out.println("You pressed K");
-                packLeft();
-                print();
-            }else if(key.getCode()== KeyCode.L) {
-                System.out.println("You pressed L");
-                packDown();
-                print();
-            }else if(key.getCode()== KeyCode.M) {
-                System.out.println("You pressed M");
-                packRight();
-                print();
+            if(!model.getBoard().isGameOver()) {
+                if (key.getCode() == KeyCode.O) {
+                    System.out.println("You pressed O");
+                    packUp();
+                    print();
+                } else if (key.getCode() == KeyCode.K) {
+                    System.out.println("You pressed K");
+                    packLeft();
+                    print();
+                } else if (key.getCode() == KeyCode.L) {
+                    System.out.println("You pressed L");
+                    packDown();
+                    print();
+                } else if (key.getCode() == KeyCode.M) {
+                    System.out.println("You pressed M");
+                    packRight();
+                    print();
+                }
             }
         });
     }

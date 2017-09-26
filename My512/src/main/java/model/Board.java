@@ -10,8 +10,9 @@ import java.util.logging.Logger;
 public interface Board {
 
 
-    public int getSideSizeInSquares();
-    public Score getScore();
+    int getSideSizeInSquares();
+    Score getScore();
+    boolean isGameOver();
 
     /**
      * Return the tile at a given coordinate, or null if none exists there.
