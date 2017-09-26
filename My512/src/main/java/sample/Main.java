@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class Main extends Application {
 
-
+    
     @Override
     public void start(Stage primaryStage) throws Exception{
         URL url = new File("src/main/resources/sample.fxml").toURI().toURL();
