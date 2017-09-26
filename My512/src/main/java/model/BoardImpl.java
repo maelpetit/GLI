@@ -94,6 +94,7 @@ public class BoardImpl implements Board {
                             == readTile(currentBoard, lineNumber, readIndex).getRank())) {
                 // Merge previously written tile and currently read one
                 readTile(nextBoard, lineNumber, writeIndex).incrementRank();
+
             } else {
                 // Advance write index and copy currently read tile
                 writeIndex++;

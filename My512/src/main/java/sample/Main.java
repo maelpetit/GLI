@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Board;
+import model.Model;
 
 import java.io.File;
 import java.net.URL;
@@ -20,7 +22,9 @@ public class Main extends Application {
         primaryStage.setTitle("2048");
         primaryStage.setScene(new Scene(root, 500, 600));
 
-        new Controller(primaryStage);
+        Model model = new Model();
+
+        new Controller(primaryStage, model);
 
         primaryStage.show();
     }
