@@ -3,6 +3,7 @@ package model.test;
 
 import model.Board;
 import model.BoardImpl;
+import model.Score;
 import model.Tile;
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,7 +18,7 @@ public class BoardImplTest {
 
     @Before
     public void setUp() throws Exception {
-        testBoard = new BoardImpl(defaultBoardSize);
+        testBoard = new BoardImpl(defaultBoardSize, new Score());
     }
 
     @Test

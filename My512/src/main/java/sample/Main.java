@@ -10,6 +10,7 @@ import model.Model;
 
 import java.io.File;
 import java.net.URL;
+import java.util.logging.Logger;
 
 public class Main extends Application {
 
@@ -22,7 +23,12 @@ public class Main extends Application {
         primaryStage.setTitle("2048");
         primaryStage.setScene(new Scene(root, 500, 600));
 
-        Model model = new Model();
+        Model model = new Model(4);
+
+        int[][] rankMatrix = {{0,0,0,1},{0,0,0,1},{0,0,0,1},{0,0,0,1}};
+
+        model.getBoard().loadBoard(rankMatrix);
+        model.getBoard().printBoard(Logger.getGlobal(), "");
 
         new Controller(primaryStage, model);
 

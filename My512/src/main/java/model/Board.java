@@ -1,5 +1,7 @@
 package model;
 
+import java.util.logging.Logger;
+
 /**
  * Created by plouzeau on 2014-10-09.
  * <p/>
@@ -9,6 +11,7 @@ public interface Board {
 
 
     public int getSideSizeInSquares();
+    public Score getScore();
 
     /**
      * Return the tile at a given coordinate, or null if none exists there.
@@ -36,5 +39,9 @@ public interface Board {
      */
     void commit();
 
+    void printBoard(Logger logger, String message);
 
+    void loadBoard(int[][] rankMatrix);
+
+    void generateRandomTile();
 }

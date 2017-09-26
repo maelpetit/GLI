@@ -3,9 +3,11 @@ package model;
 public class Model {
 
     Board board;
+    Score score;
 
-    public Model(){
-        board = new BoardImpl(4);
+    public Model(int sideSizeInSquares){
+        score = new Score();
+        board = new BoardImpl(sideSizeInSquares, score);
     }
 
     public Board getBoard() {

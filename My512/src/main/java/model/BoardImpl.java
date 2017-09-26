@@ -10,8 +10,11 @@ public class BoardImpl implements Board {
 
     private final int sideSizeInSquares;
     private Direction directionToPackInto;
+    private Score score;
+    private boolean isGameOver = false;
 
-    public BoardImpl(int sideSizeInSquares) {
+    public BoardImpl(int sideSizeInSquares, Score score) {
+        this.score = score;
         if (sideSizeInSquares <= 1) {
             throw new IllegalArgumentException("sideSizeInSquares");
         }
@@ -25,6 +28,10 @@ public class BoardImpl implements Board {
         return this.sideSizeInSquares;
     }
 
+    @Override
+    public Score getScore(){
+        return score;
+    }
 
     private Tile[][] currentBoard;
     private Tile[][] nextBoard;
@@ -72,7 +79,7 @@ public class BoardImpl implements Board {
       * Scan the current board line looking for two consecutive tiles
       * with the same rank
       * When this case is encountered, write a single tile with rank+1
-      * Otherwise just copy the tile (in practice packing it in the nex board)
+      * Otherwise just copy the tile (in practice packing it in the next board)
       * Remember that indices are 1-based in this code
       * Conversion to Java arrays indices is done in computeLineIndex and computeColumnIndex
       */
@@ -94,7 +101,7 @@ public class BoardImpl implements Board {
                             == readTile(currentBoard, lineNumber, readIndex).getRank())) {
                 // Merge previously written tile and currently read one
                 readTile(nextBoard, lineNumber, writeIndex).incrementRank();
-
+                score.addScore(1);
             } else {
                 // Advance write index and copy currently read tile
                 writeIndex++;
@@ -192,11 +199,40 @@ public class BoardImpl implements Board {
      *
      * @param rankMatrix a non null matrix reference, must match board size
      */
+    @Override
     public void loadBoard(int[][] rankMatrix) {
         for (int i = 0; i < sideSizeInSquares; i++) {
             for (int j = 0; j < sideSizeInSquares; j++) {
                 if (rankMatrix[i][j] > 0) {
                     currentBoard[i][j] = new TileImpl(rankMatrix[i][j]);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void generateRandomTile() {
+        int emptyTiles = 0;
+        for (int i = 0; i < sideSizeInSquares; i++) {
+            for (int j = 0; j < sideSizeInSquares; j++) {
+                if(currentBoard[i][j] == null){
+                    emptyTiles++;
+                }
+            }
+        }
+
+        int generated = (int) (Math.random() * emptyTiles) + 1;
+        //System.out.println(generated);
+
+        for (int i = 0; i < sideSizeInSquares; i++) {
+            for (int j = 0; j < sideSizeInSquares; j++) {
+                if(currentBoard[i][j] == null){
+                    if(generated == 1){
+                        currentBoard[i][j] = new TileImpl(1);
+                        return;
+                    }else{
+                        generated--;
+                    }
                 }
             }
         }
@@ -209,22 +245,27 @@ public class BoardImpl implements Board {
      * @param logger  where to write into
      * @param message the message to write first before writing the contents of the board
      */
+    @Override
     public void printBoard(Logger logger, String message) {
 
         logger.info(message);
+        StringBuffer outputBuffer = new StringBuffer();
+        outputBuffer.append("\n");
         for (int i = 0; i < sideSizeInSquares; i++) {
-            StringBuffer outputBuffer = new StringBuffer();
+
             outputBuffer.append(i + 1);
-            outputBuffer.append(":{");
+            outputBuffer.append(":{-");
             for (int j = 0; j < sideSizeInSquares; j++) {
                 if (currentBoard[i][j] != null) {
-                    outputBuffer.append(currentBoard[i][j].getRank());
+                    outputBuffer.append(currentBoard[i][j].getRank() + "-");
                 } else {
-                    outputBuffer.append("0");
+                    outputBuffer.append("0-");
                 }
             }
-            outputBuffer.append("}");
-            logger.info(outputBuffer.toString());
+            outputBuffer.append("}\n");
+
         }
+        logger.info(outputBuffer.toString());
     }
+
 }

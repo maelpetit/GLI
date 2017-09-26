@@ -6,6 +6,8 @@ import javafx.stage.Stage;
 import model.Board;
 import model.Model;
 
+import java.util.logging.Logger;
+
 public class Controller {
 
     Stage primaryStage;
@@ -22,38 +24,55 @@ public class Controller {
         Init();
     }
 
+    private void print(){
+        model.getBoard().printBoard(Logger.getGlobal(), "");
+    }
+
     private void Init(){
         primaryStage.getScene().addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if(key.getCode()== KeyCode.O) {
                 System.out.println("You pressed O");
                 packUp();
+                print();
             }else if(key.getCode()== KeyCode.K) {
                 System.out.println("You pressed K");
                 packLeft();
+                print();
             }else if(key.getCode()== KeyCode.L) {
                 System.out.println("You pressed L");
                 packDown();
+                print();
             }else if(key.getCode()== KeyCode.M) {
                 System.out.println("You pressed M");
                 packRight();
+                print();
             }
         });
     }
 
     public void packUp(){
         model.getBoard().packIntoDirection(Board.Direction.TOP);
+        commitAndGenerate();
     }
 
     public void packDown(){
         model.getBoard().packIntoDirection(Board.Direction.BOTTOM);
+        commitAndGenerate();
     }
 
     public void packLeft(){
         model.getBoard().packIntoDirection(Board.Direction.LEFT);
+        commitAndGenerate();
     }
 
     public void packRight(){
         model.getBoard().packIntoDirection(Board.Direction.RIGHT);
+        commitAndGenerate();
+    }
+
+    private void commitAndGenerate(){
+        model.getBoard().commit();
+        model.getBoard().generateRandomTile();
     }
 
 
